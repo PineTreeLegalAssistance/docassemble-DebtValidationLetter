@@ -1,0 +1,124 @@
+---
+metadata:
+  title: |
+    Debt Validation Request Letter
+  short title: |
+    Debt Validation
+  description: |
+    The Debt Validation Letter interview will help you draft a letter to a debt collector requesting validation of a debt they are trying to collect from you, and disputing that debt.
+  #exit url: https://www.masslegalservices.org/content/online-snap-calculator
+  show login: False
+  #generate download screen: True
+---
+include: 
+  - docassemble.AssemblyLine:assembly_line.yml
+  - custom_ptla_theme_ngb.yml
+  #- MaineDebtCollectionHelper-calculations.yml
+---
+features:
+  question back button: True
+  navigation back button: False
+   #theme file downloaded from: bootstrap theme: https://bootswatch.com/cerulean/bootstrap.min.css
+  css: 
+    - ptlatheme.css
+    #- bootstrap.min.css
+  hide navbar: False 
+  debug: False
+---
+modules:
+  - docassemble.base.core
+---
+mandatory: True
+comment: |
+  Controls order and branching logic for questions specific to this form
+id: interview_order_DebtValidationLetter
+code: |
+  DebtValidation_intro
+  users[0].name
+  set_progress(20)
+  debt_collector_name
+  set_progress(40)
+  creditor_address
+  set_progress(60)
+  account_number
+  user_address
+  set_progress(80)
+  users[0].signature 
+  set_progress(100)
+---
+comment: |
+  This question is used to introduce your interview. Please customize
+id: DVL_intro
+continue button field: DebtValidation_intro
+question: |
+  Debt Validation Request Letter
+subquestion: |
+  Use this interview to draft a letter to a debt collector requesting validation of a debt they are trying to collect from you, and disputing that debt.
+  
+  This is not legal advice. If you have questions about debt collection and live in Maine <a href="https://ptla.org/contact-us">Pine Tree Legal Assistance may be able to help.</a> 
+  
+  You can learn more about dealing with debt collectors in our article <a href="https://www.ptla.org/debt-collectors-are-calling-me-what-can-i-do">Debt collectors are calling me. What can I do?</a>.
+
+continue button label: Get started
+---
+id: Debt collector info
+question: |
+  About the debt collector
+fields:
+  - What is the name of the debt collector?: debt_collector_name
+  - What is the date on the letter they sent you/what was the date when they contacted you?: collection_date
+    datatype: date
+---
+id: Creditor address
+sets:
+    - other_parties[0].address.address
+    - other_parties[0].address.unit
+    - other_parties[0].address.city
+    - other_parties[0].address.state
+    - other_parties[0].address.zip
+question:  |
+  What is the debt collector's address?
+fields:
+    - Street address: other_parties[0].address.address
+    - Unit/Suite: other_parties[0].address.unit
+      required: False
+    - City/Town: other_parties[0].address.city
+    - State: other_parties[0].address.state
+    - Zip code: other_parties[0].address.zip
+continue button field: creditor_address
+---
+id: Account info
+question: |
+  What is the account number for the account they are trying to collect on?
+fields:
+  - Account number: account_number
+---
+id: User address
+sets:
+    - users[0].address.address
+    - users[0].address.unit
+    - users[0].address.city
+    - users[0].address.state
+    - users[0].address.zip
+question:  |
+  What is your address?
+fields:
+    - Street address: users[0].address.address
+    - Unit/Apartment: users[0].address.unit
+      required: False
+    - City/Town: users[0].address.city
+    - State: users[0].address.state
+    - Zip code: users[0].address.zip
+continue button field: user_address
+---
+mandatory: True
+question: |
+  All done! Save or print your letter to send to the debt collector.
+attachment:
+  name: Debt Validation Request Letter
+  filename: DebtValidationLetter
+  docx template file: Debt_Validation_Letter.docx
+  skip undefined: True
+  valid formats:
+    - pdf
+    - docx
