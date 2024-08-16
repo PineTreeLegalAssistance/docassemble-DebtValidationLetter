@@ -36,8 +36,105 @@
     width: 1px;
 }
 
+/* --------------------------------------------------------------------
+                          DARK MODE VISUALS
+   --------------------------------------------------------------------*/
 
-/* This is to make text white in dark mode*/
+function myFunction() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}
+
+body {
+  background-color: #fff;
+  margin: 0;
+}
+
+.dark-mode {
+  background-color: rgb(220, 220, 220);
+  color: #fff;
+}
+
+.form-control {
+  color: #000;
+  background-color: #eeeeee
+}
+
+.row {
+.form-control:focus {
+  color: #000;
+  }
+}
+/*.input {
+  color: #000
+}*/
+
+.form-select {
+  color: #000;
+  background-color: #fff
+}
+
+[data-bs-theme=dark] .al_collapse_template .bg-light, [data-bs-theme=dark] .al_display_template .bg-light, [data-bs-theme=dark] .al_display_template.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: #f8f9fa !important;
+    border-color: #d3d4d5 !important;
+}
+
+.text-start.btn.btn-light.dalabelauty {
+      --bs-btn-color: #000;
+      --bs-btn-bg: #f8f9fa;
+      --bs-btn-border-color: #f8f9fa;
+      --bs-btn-hover-color: #000;    
+      --bs-btn-hover-bg: #eeeeee;
+      --bs-btn-hover-border-color: #eeeeee;
+}
+
+[data-bs-theme=dark] #dasigcanvas {
+    background-color: #eeee;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: black;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.alert-success {
+    --bs-alert-color: #0f5132;
+    --bs-alert-bg: #75b798;
+    --bs-alert-border-color: #75b798;
+    --bs-alert-link-color: #0f5132;
+}
+
+/*Email block on final page*/
+.card {
+    --bs-card-cap-bg: #eee;
+    --bs-card-cap-color: #000;
+    --bs-card-color: #000;
+    --bs-card-bg: #fff;
+}
+
+/* checkbox on the Email Block on the last page*/
+.form-check-input {
+    background-color: #fff;
+}
+
+/*Download button on last page*/
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #000;
+    background-color: #fff;
+    border-color: #000;
+    border-top-color: ;
+    border-right-color: ;
+    border-left-color: ;
+    border-bottom-color: #eee0;
+}
+
+
+/* --------------------------------------------------------------------
+                          END OF DARK MODE
+   --------------------------------------------------------------------*/
+
+/* This is to make text white in dark mode
 function myFunction() {
   var element = document.body;
   element.classList.toggle("dark-mode");
@@ -47,7 +144,7 @@ body {
   font-family: "Source Sans Pro", sans-serif;
   color: #fff;
  
-}
+}*/
 
 
 /* this is the font style for the body of the interview */
@@ -176,6 +273,7 @@ body {
   color: #000;
   border:2px solid;
   position: relative;
+  --bs-progress-bg: #eeeeee;
 }
 .progress-6::before {
   content:"";
@@ -203,8 +301,87 @@ body {
   
 /*box shadow around text boxes*/
 .form-control:focus {
-    color: var(--bs-body-color);
+    color: #000 /*var(--bs-body-color)*/;
     background-color: var(--bs-form-control-bg);
     border-color: #024442;
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(2, 68, 66,.25);
+
+/*====================================================================================================== 
+Progress Bar on mobile || 375 x 812 || Default, Portrait and Landscape 
+======================================================================================================== */
+@media only screen and (min-width: 375px) 
+and (max-width: 812px){ 
+    .progress, .progress-stacked {
+      width:390px;
+      height:22px;
+      background-color: #eeeeee;/*{display: none !important; visibility: hidden !important;}*/
+  }
+    .form-control {
+      color: #000;
+      background-color: #eeeeee;
+  }
+    .form-select {
+      color: #000;
+      background-color: #eeeeee;
+  }
+    .text-start.btn.btn-light.dalabelauty {
+      --bs-btn-color: #000;
+      --bs-btn-bg: #f8f9fa;
+      --bs-btn-border-color: #f8f9fa;
+  }
+    .row {
+      --bs-gutter-x: 2.5rem;
+      --bs-gutter-y: .5rem;
+}
+@media only screen and (min-width: 375px) 
+and (max-width: 812px) and (orientation: portrait) { 
+    .progress, .progress-stacked {
+      width:350px;
+      height:22px;
+      background-color: #eeeeee;/*{display: none !important; visibility: hidden !important;}*/
+  }
+    .form-control {
+      color: #000;
+      background-color: #eeeeee;
+  }
+    .form-select {
+      color: #000;
+      background-color: #eeeeee;
+  }
+    .text-start.btn.btn-light.dalabelauty {
+      --bs-btn-color: #000;
+      --bs-btn-bg: #f8f9fa;
+      --bs-btn-border-color: #f8f9fa;
+  }
+    .row {
+      --bs-gutter-x: 2.5rem;
+      --bs-gutter-y: .5rem;
+  }
+    .mt-2 {
+      margin-top: 2.0rem !important;
+}
+@media only screen and (min-width: 375px) 
+and (max-width: 812px) and (orientation: landscape) { 
+    .progress, .progress-stacked {
+      width:390px;
+      height:22px;
+      background-color: #eeeeee;/*{display: none !important; visibility: hidden !important;}*/
+  }      
+    .form-control {
+      color: #000;
+      background-color: #eeeeee;
+  }
+    .form-select {
+      color: #000;
+      background-color: #eeeeee;
+  }
+    .text-start.btn.btn-light.dalabelauty {
+      --bs-btn-color: #000;
+      --bs-btn-bg: #f8f9fa;
+      --bs-btn-border-color: #f8f9fa;
+  }
+    .row {
+      --bs-gutter-x: 2.5rem;
+      --bs-gutter-y: .5rem;
+}
