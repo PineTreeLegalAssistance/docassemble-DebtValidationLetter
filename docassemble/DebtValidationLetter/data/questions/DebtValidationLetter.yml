@@ -40,6 +40,7 @@ comment: |
 id: interview_order_DebtValidationLetter
 code: |
   DebtValidation_intro
+  terms_check
   users[0].name
   set_progress(20)
   debt_collector_name
@@ -47,6 +48,7 @@ code: |
   creditor_address
   set_progress(60)
   account_number
+  additional_information
   user_address
   set_progress(80)
   users[0].signature 
@@ -129,12 +131,19 @@ subquestion: |
   <h3>Not sure if this is the right tool for you?</h3> 
   <ul>
   <li>This tool will help you draft a letter to a debt collector <strong>who first contacted you in the last 30 days</strong> about a debt. The letter will ask for certain rights and protections you have as a consumer, like getting verification of the amount of the debt, and who owns it.</li>
+  <li>NOTE: Even though you shouldn’t use this tool if you were first contacted by your debt collector over 30 days ago, you can still dispute the debt later, including in court!</li>
   <li>You can learn more about dealing with debt collectors in our article <a href="https://www.ptla.org/debt-collectors-are-calling-me-what-can-i-do">Debt collectors are calling me. What can I do?</a></li>
   <li>We also offer a <a href="https://apps-dev.ptla.org/start/stopcollections/">Maine Stop Collections Letter</a> (if you are dealing with an unsecured debt like a credit card and your income and property are exempt from collections under Maine law) and a <a href="https://apps-dev.ptla.org/start/debthelper/">Debt Collection Hearing Helper</a> if you are being sued for a debt or need to go to a 'disclosure hearing.'</li>
   </ul>
   
   <strong>If this is the right tool for you, let’s get started!</strong>
   
+continue button label: Get started
+---
+id: Terms
+question: |
+  Terms of Use
+subquestion: |
   Please review our Terms of Use before starting.
   
   ${ display_template(PTLA_terms_of_use, scrollable=True, collapse=False) }
@@ -153,9 +162,8 @@ fields:
       - I accept the terms of use.: I accept
     validation messages:
       minlength: |
-        You cannot continue unless you agree to the terms of use.      
-
-continue button label: Get started
+        You cannot continue unless you agree to the terms of use.
+continue button field: terms_check        
 ---
 id: Debt collector info
 question: |
@@ -190,6 +198,19 @@ question: |
   What is the account number for the account they are trying to collect on?
 fields:
   - Account number: account_number
+---
+id: Additional info
+question: |
+  Details about why you dispute this debt
+subquestion: |
+  This tool will create a letter saying that you do not believe you owe this debt or the amount is wrong.  If you would like the letter to give any more details about why you dispute the debt, please write them here. The tool will add what you write to the first paragraph of your letter.   
+  
+  You can leave the box blank. You are not required to give more details to preserve your rights. But if you have information about why you don't owe the debt, or the amount claimed, giving more information may help resolve a dispute in your favor.
+fields:
+  - Details about why you dispute this debt:: additional_information
+    input type: area
+    label above field: True
+    required: False
 ---
 id: User address
 sets:
