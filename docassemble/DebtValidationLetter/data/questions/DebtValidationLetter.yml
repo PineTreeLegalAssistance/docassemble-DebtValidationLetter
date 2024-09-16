@@ -173,7 +173,7 @@ fields:
   - What is the date on the first letter they sent you/what was the date when they first contacted you?: collection_date
     datatype: date
     note: |
-      To use this tool, this must be within the last 30 days!
+      To use this tool, this must be within the last 30 days - but you can still dispute the debt later, including in court!
 ---
 id: Creditor address
 sets:
@@ -230,6 +230,20 @@ fields:
     - Zip code: users[0].address.zip
 continue button field: user_address
 ---
+id: Signature
+question: |
+  Sign your Debt Validation Request Letter
+subquestion: |
+  Sign your letter using your finger on a touchscreen, or a mouse - your signature will be added to your letter.
+  <br />
+  <br />
+  <strong>Or you can print the letter and sign it on paper before mailing. Just leave the signature field below blank and choose 'Next' if you want to sign your form this way.</strong> 
+signature: users[0].signature
+under: |
+  ${ "Sign your name here" }
+required: False
+---
+
 objects:
   - Next_Steps: ALDocument.using(title="Instructions", filename="Next_Steps_Debt_Validation_Letter.docx", enabled=True, has_addendum=False, default_overflow_message=AL_DEFAULT_OVERFLOW_MESSAGE)
   - Debt_Validation_Request_Letter: ALDocument.using(title="Debt Validation Request Letter", filename="DebtValidationLetter", enabled=True, has_addendum=False, default_overflow_message=AL_DEFAULT_OVERFLOW_MESSAGE)
