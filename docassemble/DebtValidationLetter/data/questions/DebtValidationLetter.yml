@@ -206,6 +206,8 @@ subquestion: |
   This tool will create a letter saying that you do not believe you owe this debt or the amount is wrong.  If you would like the letter to give any more details about why you dispute the debt, please write them here. The tool will add what you write to the first paragraph of your letter.   
   
   You can leave the box blank. You are not required to give more details to preserve your rights. But if you have information about why you don't owe the debt, or the amount claimed, giving more information may help resolve a dispute in your favor.
+  
+  You can also include documents with your letter when you send it to the collector. You may want to send copies of documents showing you don't owe the debt or the amount they are trying to collect. Examples could include proof of payment, proof you had your identity stolen and reported it to the creditor, or proof that you are not the account holder.
 fields:
   - Details about why you dispute this debt:: additional_information
     input type: area
