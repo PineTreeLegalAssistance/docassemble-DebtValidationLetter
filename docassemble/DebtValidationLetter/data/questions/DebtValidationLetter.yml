@@ -34,6 +34,9 @@ features:
 modules:
   - docassemble.base.core
 ---
+code: |
+  al_form_requires_digital_signature = False
+---
 mandatory: True
 comment: |
   Controls order and branching logic for questions specific to this form
@@ -51,7 +54,9 @@ code: |
   additional_information
   user_address
   set_progress(80)
-  users[0].signature 
+  saw_signature_choice
+  if signature_choice == 'this_device':
+    users[0].signature 
   set_progress(100)
 ---
 template: PTLA_terms_of_use
@@ -232,18 +237,34 @@ fields:
     - Zip code: users[0].address.zip
 continue button field: user_address
 ---
+code: |
+  signature_fields = ['users[0].signature']
+---
+id: signature choice
+decoration: file-signature
+question: |
+  Your documents are almost ready
+subquestion: |
+  How do you want to sign them?
+fields: 
+  - I will sign: signature_choice
+    input type: radio
+    choices:
+      - Electronically on this device: this_device
+      - On the paper with a pen after I print the documents: sign_after_printing
+    show if:
+      code: |
+        not al_form_requires_digital_signature
+continue button field: saw_signature_choice        
+---
 id: Signature
 question: |
   Sign your Debt Validation Request Letter
 subquestion: |
   Sign your letter using your finger on a touchscreen, or a mouse - your signature will be added to your letter.
-  <br />
-  <br />
-  <strong>Or you can print the letter and sign it on paper before mailing. Just leave the signature field below blank and choose 'Next' if you want to sign your form this way.</strong> 
 signature: users[0].signature
 under: |
   ${ "Sign your name here" }
-required: False
 ---
 
 objects:
