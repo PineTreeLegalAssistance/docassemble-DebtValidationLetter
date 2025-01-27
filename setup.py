@@ -46,7 +46,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
 setup(name='docassemble.DebtValidationLetter',
       version='0.0.1',
       description=('A docassemble extension.'),
-      long_description='First draft of debt validation/debt dispute letter.',
+      long_description='Maine debt validation/debt dispute form letter.',
       long_description_content_type='text/markdown',
       author='Jack Haycock',
       author_email='jhaycock@ptla.org',

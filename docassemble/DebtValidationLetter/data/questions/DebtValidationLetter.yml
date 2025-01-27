@@ -275,6 +275,7 @@ objects:
   - al_user_bundle: ALDocumentBundle.using(elements=[Next_Steps,Debt_Validation_Request_Letter], filename="debt_validation_package.pdf", title="All documents to download for your records", enabled=True)
   - al_recipient_bundle: ALDocumentBundle.using(elements=Next_Steps,Debt_Validation_Request_Letter], filename="debt_validation_package.pdf", title="All documents to download for your records", enabled=True)  
 ---
+id: interview_complete
 mandatory: True
 question: |
   All done! Save or print your letter to send to the debt collector.

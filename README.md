@@ -1,1 +1,1 @@
-First draft of debt validation/debt dispute letter.
+Maine debt validation/debt dispute form letter.
